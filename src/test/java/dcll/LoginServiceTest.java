@@ -16,15 +16,13 @@ public class LoginServiceTest {
     @Test
     public void loginExists() throws Exception {
         //GIVEN
-        LoginService logservice;
-        String[] loginsexistants = new String[2];
 
-        loginsexistants = new String[2];
-        loginsexistants[0] = "Test0";
-        loginsexistants[0] = "Test1";
+
+        LoginService logservice = new LoginService(new
+                String[]{"Test0","Test1"});
 
         //WHEN
-        logservice = new LoginService(loginsexistants);
+
         boolean test0 = logservice.loginExists("Test0");
         boolean test1 = logservice.loginExists("Test1");
         boolean test2 = logservice.loginExists("Test2");
@@ -39,15 +37,13 @@ public class LoginServiceTest {
     public void addLogin() throws Exception {
 
         //GIVEN
-        String[] loginsexistants = new String[1];
-        ArrayList<String> loginsExistants = new ArrayList<>();
-        LoginService log = new LoginService(loginsexistants);
+        LoginService log = new LoginService(new
+                String[]{"loginTest"});
 
 
-        final String login1 = "loginTest";
 
         //WHEN
-        boolean logexist = log.loginExists(login1);
+        boolean logexist = log.loginExists("loginTest");
 
         //THEN
         assertTrue(logexist);
@@ -59,41 +55,22 @@ public class LoginServiceTest {
 
         //GIVEN
         final String pref = "log";
-        String[] listeLoginsExistant = new String[4];
-        final String log1 = "log1";
-        final String log2 = "testlog";
-        final String log3 = "log2";
-        final String log4 = "Etudiant";
 
-
-        listeLoginsExistant[0] = log1;
-        listeLoginsExistant[1] = log2;
-        listeLoginsExistant[2] = log3;
-        listeLoginsExistant[3] = log4;
-
-        LoginService log = new LoginService(listeLoginsExistant);
+        LoginService log = new LoginService(new
+                String[]{"log1","testlog","log2","Etudiant"});
 
         //WHEN
         List<String> listeATester = log.findAllLoginsStartingWith(pref);
 
         //THEN
-
+        int nbtestReussi = 0;
         for (String s : listeATester) {
-            switch (s) {
-                case log1:
-                    assertTrue(true);
-                    break;
-                case log3:
-                    assertTrue(true);
-                    break;
-                default:
-                    assertTrue(false);
-                    break;
+            if (s.startsWith(pref)) {
+                nbtestReussi++;
             }
 
         }
-
-        assertTrue(false);
+        assertTrue(nbtestReussi == 2);
 
 
     }
