@@ -18,7 +18,7 @@ public class LoginServiceTest {
         //GIVEN
         LoginService logservice;
         String[] loginsexistants = new String[2];
-        ArrayList<String> loginsExistants = new ArrayList<String>();
+
         loginsexistants = new String[2];
         loginsexistants[0] = "Test0";
         loginsexistants[0] = "Test1";
