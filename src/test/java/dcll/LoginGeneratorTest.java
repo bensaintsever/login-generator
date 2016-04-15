@@ -24,9 +24,18 @@ public class LoginGeneratorTest {
                 "Jean");
         String log3 = logGenerator.generateLoginForNomAndPrenom("Dùrand",
                 "Paul");
+        String log4 = logGenerator.generateLoginForNomAndPrenom("Du",
+                "Paul");
+        String log5 = logGenerator.generateLoginForNomAndPrenom("Ralling",
+                "John");
+
+        System.out.println("TESTGENERATOR paul du: "+log4);
+        System.out.println("TESTGENERATOR John Rallin: "+log5);
+
 
         //THEN
-        if ((log1 == "PDUR") && (log2 == "JROL1") && (log3 == "PDUR")){
+        if ((log1 == "PDUR") && (log2 == "JROL1") && (log3 == "PDUR") &&
+                (log4 == "PDU") && (log5 == "JRAL2")){
             assertTrue(true);
         }
 
